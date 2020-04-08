@@ -1,15 +1,11 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/language
-    username: postgres
-    password: admin
+    url: ${DATABASE_URL}
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
   flyway:
-    url: jdbc:postgresql://localhost:5432/language
-    user: postgres
-    password: admin
+    url: ${DATABASE_URL}
     schemas: public
 
 app:
