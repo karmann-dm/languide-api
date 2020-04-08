@@ -30,7 +30,7 @@ public class TemplateProcessor {
             ElementProcessor elementProcessor = elementProcessors.stream()
                     .filter(p -> p.acceptableFor(elementType))
                     .findFirst()
-                    .orElseThrow();
+                    .orElseThrow(RuntimeException::new);
             filledTemplate.getFields().addAll(elementProcessor.process(field, literals));
         });
         return objectMapper.writeValueAsString(filledTemplate);

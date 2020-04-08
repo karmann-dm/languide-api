@@ -23,13 +23,13 @@ public class CardProcessorTest {
     public void testCorrectConverters() {
         Field field = new Field();
         field.setType("CARD");
-        field.setOptions(new HashMap<>() {{
+        field.setOptions(new HashMap<String, Object>() {{
             put("cardsCount", 5);
             put("optionsCount", 4);
             put("perceptionForCard", 10);
         }});
 
-        List<Literal> literals = new ArrayList<>() {{
+        List<Literal> literals = new ArrayList<Literal>() {{
             add(new Literal().setSource(Language.DE).setDestination(Language.EN).setWord("word_1").setTranslation("translation_1"));
             add(new Literal().setSource(Language.DE).setDestination(Language.EN).setWord("word_2").setTranslation("translation_2"));
             add(new Literal().setSource(Language.DE).setDestination(Language.EN).setWord("word_3").setTranslation("translation_3"));
