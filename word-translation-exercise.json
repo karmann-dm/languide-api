@@ -1,0 +1,12 @@
+{
+  "fields": [
+    {
+      "type": "cards",
+      "options": {
+        "cardsCount": 5,
+        "optionsCount": 4,
+        "perceptionForCard": 10
+      }
+    }
+  ]
+}

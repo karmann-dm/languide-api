@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/language
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+  flyway:
+    url: jdbc:postgresql://localhost:5432/language
+    user: postgres
+    password: admin
+    schemas: public
+
+app:
+  jwtSecret: JWTSecretCKPKey
+  jwtExpirationInMs: 604800000
+  yandexApiKey: "trnsl.1.1.20200330T145557Z.102cd178b2856bc0.28f1eb604dd06e07b75fa3418c5ae92c444d132f"
+  yandexScheme: https
+  yandexHost: translate.yandex.net
+
+---
+spring:
+  profiles:
+    active: test
+
+app:
+  yandexScheme: http
+  yandexHost: localhost
+  yandexPort: 9090

@@ -1,0 +1,1 @@
+alter table users add column language varchar(10) not null default 'DE';
