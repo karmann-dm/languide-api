@@ -1,12 +1,16 @@
 spring:
   datasource:
-    url: ${DATABASE_URL}
+    url: ${JDBC_DATABASE_URL}
     driver-class-name: org.postgresql.Driver
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
   flyway:
-    url: ${DATABASE_URL}
+    url: ${JDBC_DATABASE_URL}
     schemas: public
+    user: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
 
 app:
   jwtSecret: JWTSecretCKPKey
