@@ -28,6 +28,7 @@ public class GetAllLiteralsTest extends IntegrationTest {
         user = Given.user(authService)
                 .withUsername("user")
                 .withPassword("pass")
+                .withLanguage(Language.DE)
                 .please();
     }
 
@@ -42,7 +43,7 @@ public class GetAllLiteralsTest extends IntegrationTest {
                 .please();
 
         performAuthorizedGet(
-                "/literal",
+                "/literal?lang=DE",
                 new AuthRequest()
                     .setUsername(user.getName())
                     .setPassword("pass")
@@ -57,7 +58,7 @@ public class GetAllLiteralsTest extends IntegrationTest {
                         jsonPath("$.payload").isArray()
                 )
                 .andExpect(
-                        jsonPath("$.payload[0].source").value("EN")
+                        jsonPath("$.payload[0].source").value("DE")
                 );
     }
 }

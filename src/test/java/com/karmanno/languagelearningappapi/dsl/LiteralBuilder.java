@@ -37,6 +37,27 @@ public class LiteralBuilder {
         return this;
     }
 
+    public LiteralBuilder withLiteral(
+            User user,
+            Language source, Language dest,
+            String sourceWord, String destWord,
+            Integer perception
+    ) {
+        literals.add(
+                literalRepository.save(
+                        new Literal()
+                                .setType(LiteralType.WORD)
+                                .setUser(user)
+                                .setPerception(perception)
+                                .setSource(source)
+                                .setWord(sourceWord)
+                                .setDestination(dest)
+                                .setTranslation(destWord)
+                )
+        );
+        return this;
+    }
+
     public List<Literal> please() {
         return literals;
     }

@@ -1,8 +1,10 @@
 package com.karmanno.languagelearningappapi.controller.auth;
 
 import com.karmanno.languagelearningappapi.controller.IntegrationTest;
+import com.karmanno.languagelearningappapi.domain.Language;
 import com.karmanno.languagelearningappapi.dsl.Given;
 import com.karmanno.languagelearningappapi.dto.AuthRequest;
+import com.karmanno.languagelearningappapi.dto.SignupRequest;
 import com.karmanno.languagelearningappapi.service.AuthService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,13 +24,15 @@ public class LogInTest extends IntegrationTest {
         Given.user(authService)
                 .withUsername("user")
                 .withPassword("password")
+                .withLanguage(Language.DE)
                 .please();
 
         performUnauthorizedJsonPostWithBody(
                 "/auth/login",
-                new AuthRequest()
+                new SignupRequest()
                     .setUsername("user")
                     .setPassword("password")
+                    .setLanguage("DE")
         ).andExpect(
                 jsonPath("$.success").value(true)
         ).andExpect(
@@ -44,6 +48,7 @@ public class LogInTest extends IntegrationTest {
         Given.user(authService)
                 .withUsername("user")
                 .withPassword("password")
+                .withLanguage(Language.DE)
                 .please();
 
         performUnauthorizedJsonPostWithBody(
@@ -62,6 +67,7 @@ public class LogInTest extends IntegrationTest {
         Given.user(authService)
                 .withUsername("user")
                 .withPassword("password")
+                .withLanguage(Language.DE)
                 .please();
 
         performUnauthorizedJsonPostWithBody(

@@ -22,6 +22,7 @@ public class AddLiteralTest extends IntegrationTest {
         User user = Given.user(authService)
                 .withUsername("user")
                 .withPassword("pass")
+                .withLanguage(Language.DE)
                 .please();
 
         performAuthorizedJsonPostWithBody(
@@ -73,6 +74,7 @@ public class AddLiteralTest extends IntegrationTest {
         User user = Given.user(authService)
                 .withUsername("user")
                 .withPassword("pass")
+                .withLanguage(Language.DE)
                 .please();
 
         performAuthorizedJsonPostWithBody(

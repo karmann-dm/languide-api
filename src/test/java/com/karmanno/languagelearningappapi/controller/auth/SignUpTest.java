@@ -2,6 +2,7 @@ package com.karmanno.languagelearningappapi.controller.auth;
 
 import com.karmanno.languagelearningappapi.controller.IntegrationTest;
 import com.karmanno.languagelearningappapi.dto.AuthRequest;
+import com.karmanno.languagelearningappapi.dto.SignupRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,9 +14,10 @@ public class SignUpTest extends IntegrationTest {
     public void positive() throws Exception {
         performUnauthorizedJsonPostWithBody(
                 "/auth/signup",
-                new AuthRequest()
+                new SignupRequest()
                     .setUsername("username")
                     .setPassword("password")
+                    .setLanguage("DE")
         )
                 .andExpect(
                         status().is(200)

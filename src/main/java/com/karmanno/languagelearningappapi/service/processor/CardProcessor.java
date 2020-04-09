@@ -37,6 +37,7 @@ public class CardProcessor implements ElementProcessor {
 
         chosenLiterals.forEach(literal -> {
             Map<String, Object> values = new HashMap<>();
+            values.put("literalId", literal.getId());
             values.put("word", literal.getWord());
             values.put("options", chooseOptions(literals, literal, optionsCount));
             values.put("correct", literal.getTranslation());

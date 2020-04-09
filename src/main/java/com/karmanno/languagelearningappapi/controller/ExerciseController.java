@@ -2,6 +2,7 @@ package com.karmanno.languagelearningappapi.controller;
 
 import com.karmanno.languagelearningappapi.dto.AddExerciseRequest;
 import com.karmanno.languagelearningappapi.dto.ApiResponse;
+import com.karmanno.languagelearningappapi.dto.ExerciseCompleteRequest;
 import com.karmanno.languagelearningappapi.security.CurrentUser;
 import com.karmanno.languagelearningappapi.security.UserPrincipal;
 import com.karmanno.languagelearningappapi.service.ExerciseService;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("exercise")
@@ -41,6 +43,16 @@ public class ExerciseController {
                                                    @CurrentUser UserPrincipal user) {
         return ResponseEntity.ok(
                 Try.of(() -> ApiResponse.success(exerciseService.getById(id, user.getId())))
+                    .onFailure(e -> ApiResponse.error(e.getMessage())).get()
+        );
+    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<ApiResponse> completeExercise(@PathVariable Integer id,
+                                                        @CurrentUser UserPrincipal user,
+                                                        @RequestBody ExerciseCompleteRequest request) {
+        return ResponseEntity.ok(
+                Try.of(() -> ApiResponse.success(exerciseService.complete(id, user.getId(), request)))
                     .onFailure(e -> ApiResponse.error(e.getMessage())).get()
         );
     }
